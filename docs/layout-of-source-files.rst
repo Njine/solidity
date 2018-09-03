@@ -96,10 +96,11 @@ filesystem, it can also map to resources discovered via e.g. ipfs, http or git.
 Use in Actual Compilers
 -----------------------
 
-When the compiler is invoked, you can specify how to discover the first element
-of a path, and also the path prefix remappings. For
-example``github.com/ethereum/dapp-bin/library`` is remapped to
-``/usr/local/dapp-bin/library`` and the compiler reads the files from there.
+When invoking the compiler, you can specify how to discover the first element
+of a path, and also path prefix remappings. For
+example you can setup a remapping so that everything imported from the virtual
+directory ``github.com/ethereum/dapp-bin/library`` would actually be read from
+your local directory ``/usr/local/dapp-bin/library``.
 If multiple remappings apply, the one with the longest key is tried first.
 An empty prefix is not allowed. The remappings can depend on a context,
 which allows you to configure packages to import e.g., different versions of a
@@ -107,7 +108,7 @@ library of the same name.
 
 **solc**:
 
-For solc (the commandline compiler), you provide these remapping paths as
+For solc (the commandline compiler), you provide these path remappings as
 ``context:prefix=target`` arguments, where both the ``context:`` and the
 ``=target`` parts are optional (``target`` defaults to ``prefix`` in this
 case). All remapping values that are regular files are compiled (including
